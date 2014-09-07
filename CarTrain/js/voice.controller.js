@@ -14,7 +14,7 @@
             "beginCaravan": {
                 "regex": /^begin caravan.+/gi,
                 "lang": 'en-US',
-                "call": function(e) {
+                "call": function (e) {
                     vm.beginCaravan();
                 }
             }

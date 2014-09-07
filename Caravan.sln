@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarTrain", "CarTrain\CarTrain.csproj", "{0A5C1209-EB43-470F-841D-315964A78FC3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caravan", "CarTrain\Caravan.csproj", "{0A5C1209-EB43-470F-841D-315964A78FC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATTM2X", "..\ATTM2X\ATTM2X.csproj", "{26F18F63-C8C9-40B1-9839-79758065376F}"
 EndProject

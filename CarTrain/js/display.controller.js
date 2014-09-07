@@ -2,6 +2,10 @@
     angular.module("caravan")
     .controller("DisplayController", DisplayController);
 
-    function DisplayController() {
-    }
+    DisplayController.$inject = ["Caravan"];
+
+    function DisplayController(Caravan) {
+        var vm = this;
+        vm.caravan = Caravan;
+    };
 })();
