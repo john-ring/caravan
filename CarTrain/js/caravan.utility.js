@@ -5,37 +5,93 @@
     Caravan.$inject = ['Ericsson', 'm2x.Manager'];
 
     function Caravan(Ericsson, m2x) {
-        var updateCaravan = function (status) {
-            for (var i = 0; i < caravan.members.length; i++) {
-                Ericsson.updateFields(status);
-            }
-        };
-
-        var members = [];
-        var addCaravanMember = function (member) {
-            members.push(member);
-        };
-
-        var startCaravan = function () {
-            m2x.start();
-        };
-        var endCaravan = function () {
-            m2x.stop();
-        };
-
-        var dataCallback = function (data) {
-            updateCaravan(data);
-        };
-
-        m2x.setCallback = dataCallback;
-
         var service = {
-            'startCaravan': startCaravan,
-            'endCaravan': endCaravan,
-            'addCaravanMember': addCaravanMember,
-            'setLeader': setLeader
+            startCaravan: startCaravan,
+            endCaravan: endCaravan,
+            addCaravanMember: addCaravanMember,
+            setLeader: setLeader,
+            memberRows: [],
+            setTrip: setTrip,
+            trip: null,
+            members: [],
+            init: init
         };
 
         return service;
+
+        function init() {
+            m2x.setLeaderCallback(leaderCallback);
+            m2x.setFollowerCallback(followerCallback);
+        };
+
+        function updateCaravan(status) {
+            for (var i = 1; i < service.members.length; i++) {
+                Ericsson.updateFields(service.members[i], status);
+            }
+        };
+
+        function addCaravanMember(member) {
+            service.members.push(member);
+            updateMemberRows();
+        };
+
+        function updateMemberRows() {
+            m2x.setMembers(service.members);
+            var newRows = [];
+            var currentIndex = 0;
+            var columnCount = 2;
+            for (var i = 0; i < service.members.length; i++) {
+                if (i % columnCount === 0) {
+                    newRows.push([]);
+                }
+                newRows[currentIndex].push(service.members[i]);
+                if (i % columnCount === columnCount - 1) {
+                    currentIndex++;
+                }
+            }
+            service.memberRows = newRows;
+        };
+
+        function startCaravan() {
+            m2x.start();
+        };
+        function endCaravan() {
+            m2x.stop();
+        };
+        function setLeader(leader) {
+            service.members.splice(0, 0, leader);
+            updateMemberRows();
+        }
+        function rateFuelUsage(value) {
+            var type = "";
+            if (value < 25) {
+                type = 'success';
+            } else if (value < 50) {
+                type = 'info';
+            } else if (value < 75) {
+                type = 'warning';
+            } else {
+                type = 'danger';
+            }
+            return type;
+        };
+        function leaderCallback(member, data) {
+            member.fuelUsage = data.fuelUsage;
+            member.fuelUsageType = rateFuelUsage(member.fuelUsage);
+            updateCaravan(data);
+        };
+        function followerCallback(member, data) {
+            member.fuelUsage = data.fuelUsage;
+            member.fuelUsageType = rateFuelUsage(member.fuelUsage);
+        };
+
+        function setTrip(newTrip) {
+            service.trip = newTrip;
+        };
+
+        function beginCoupling(member) {
+        };
+
+        init();
     }
 })();

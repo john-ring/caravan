@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body ng-app="caravan" ng-controller="VoiceListener">
+<body ng-app="caravan" ng-controller="VoiceListener" ng-cloak>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -17,6 +17,11 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Caravan", "Index", "Home", null, new { @class = "navbar-brand" })
+                <div class="navbar-right" ng-controller="Buttons as buttons">
+                    <button class="btn btn-primary" ng-click="buttons.addMember()">Add Member</button>
+                    <button class="btn btn-primary" ng-click="buttons.startCaravan()">Start Caravan</button>
+                    <button class="btn btn-primary" ng-click="buttons.stopCaravan()">Stop Caravan</button>
+                </div>
             </div>
         </div>
     </div>

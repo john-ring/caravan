@@ -1,10 +1,10 @@
 ﻿(function () {
     angular.module("caravan")
-    .factory("Ericsson.services.status", Status);
+    .factory("Ericsson.service.emulate", Emulate);
 
-    Ericsson.$inject = ['$q', '$resource', 'Ericsson.services.emulate.url', 'Ericsson.services.emulate.fields', 'Ericsson.services.headers.authorization'];
+    Emulate.$inject = ['$q', '$resource', 'Ericsson.service.emulate.url', 'Ericsson.service.emulate.fields', 'Ericsson.service.headers.authorization'];
 
-    function Status($q, $resource, url, fields, authorization) {
+    function Emulate($q, $resource, url, fields, authorization) {
         var resource = $resource(url, {}, {
             post: {
                 method: 'POST',
@@ -13,14 +13,18 @@
         });
 
         var updateFields = function (vin, status) {
+            console.log(status);
+
             var promises = [];
             for (var f in fields) {
                 promises.push(resource.post({ field: status[f] }, function (result) {
                     return result;
+                }, function (error) {
+                    console.log(error);
                 }));
             }
 
-            return $q.deferAll(promises);
+            return $q.all(promises);
         };
 
         var service = {

@@ -12,7 +12,7 @@
         });
         $speechRecognition['en-US'] = {
             "beginCaravan": {
-                "regex": /^begin caravan.+/gi,
+                "regex": /^start caravan.+/gi,
                 "lang": 'en-US',
                 "call": function (e) {
                     vm.beginCaravan();
@@ -28,6 +28,6 @@
             $speechSynthetis.speak("Beginning caravan.");
         };
 
-        $speechRecognition.listen();
+        // $speechRecognition.listen();
     }
 })();

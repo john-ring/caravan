@@ -1,11 +1,29 @@
 ﻿(function () {
     angular.module("caravan")
-    .controller("DisplayController", DisplayController);
+    .controller("Display", Display);
 
-    DisplayController.$inject = ["Caravan"];
+    Display.$inject = ["Caravan", "m2x.feed.leader", "member.status"];
 
-    function DisplayController(Caravan) {
+    function Display(Caravan, feed, statuses) {
         var vm = this;
         vm.caravan = Caravan;
+
+        var init = function () {
+            Caravan.init();
+            Caravan.setTrip({ destination: { city: "Austin", state: "TX", latitude: "", longitude: "" }, eta: 3.65 });
+            Caravan.setLeader({
+                "firstName": "John",
+                "lastName": "Ring",
+                "phoneNumber": "444-666-6799",
+                "vin": "123456781235",
+                "image": "/images/profile_john.png",
+                "feed": feed,
+                "fuelUsage": 87,
+                "fuelUsageType": "success",
+                "status": statuses.Leader
+            });
+        };
+
+        init();
     };
 })();

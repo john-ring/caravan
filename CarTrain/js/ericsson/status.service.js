@@ -2,7 +2,7 @@
     angular.module("caravan")
     .factory("Ericsson.service.status", Status);
 
-    Ericsson.$inject = ['$resource', 'Ericsson.service.status.url', 'Ericsson.service.headers.authorization'];
+    Status.$inject = ['$resource', 'Ericsson.service.status.url', 'Ericsson.service.headers.authorization'];
 
     function Status($resource, url, authorization) {
         var resource = $resource(url, {}, {
@@ -15,6 +15,8 @@
         var get = function () {
             return resource.get({}, function (result) {
                 return result;
+            }, function (error) {
+                console.log(error);
             });
         };
 
