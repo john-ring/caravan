@@ -1,0 +1,25 @@
+﻿<div class="row">
+    <div class="col-sm-6">
+        <div ng-repeat="row in caravan.memberRows">
+            <div ng-repeat="member in row">
+                <div>{{member.name}}</div>
+                <div>{{member.image}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label">Destination</label>
+                <span>{{trip.destination}}</span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">ETA</label>
+                <span>{{trip.eta}}</span>
+            </div>
+        </div>
+        <div>
+            Map goes here.
+        </div>
+    </div>
+</div>
