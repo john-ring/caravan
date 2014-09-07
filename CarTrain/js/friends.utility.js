@@ -13,7 +13,7 @@
                 "vin": "123456781234",
                 "image": "/Content/images/profile_chris.jpg",
                 "feed": feed1,
-                "fuelUsage": null,
+                "fuel_usage": null,
                 "fuelUsageType": null,
                 "status": statuses.Coupled
             },
@@ -24,7 +24,7 @@
                 "vin": "123456781235",
                 "image": "/Content/images/profile_ann.jpg",
                 "feed": feed2,
-                "fuelUsage": null,
+                "fuel_usage": null,
                 "fuelUsageType": null,
                 "status": statuses.Pending
             },
@@ -35,7 +35,7 @@
                 "vin": "123456781235",
                 "image": "/Content/images/profile_ann.jpg",
                 "feed": feed2,
-                "fuelUsage": null,
+                "fuel_usage": null,
                 "fuelUsageType": null,
                 "status": statuses.Pending
             }

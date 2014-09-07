@@ -92,13 +92,13 @@
             return type;
         };
         function leaderCallback(member, data) {
-            member.fuelUsage = data.fuelUsage;
-            member.fuelUsageType = rateFuelUsage(member.fuelUsage);
+            member.fuel_usage = data.fuel_usage;
+            member.fuelUsageType = rateFuelUsage(member.fuel_usage);
             updateCaravan(data);
         };
         function followerCallback(member, data) {
-            member.fuelUsage = data.fuelUsage;
-            member.fuelUsageType = rateFuelUsage(member.fuelUsage);
+            member.fuel_usage = data.fuel_usage;
+            member.fuelUsageType = rateFuelUsage(member.fuel_usage);
         };
 
         function setTrip(newTrip) {

@@ -49,7 +49,7 @@
                 "vin": "123456781235",
                 "image": "/Content/images/profile_john.png",
                 "feed": feed,
-                "fuelUsage": 87,
+                "fuel_usage": 87,
                 "fuelUsageType": "success",
                 "status": statuses.Leader
             });
