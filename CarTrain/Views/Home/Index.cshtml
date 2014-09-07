@@ -1,30 +1,38 @@
-﻿<div class="row" ng-controller="Display as display">
-    <div class="col-sm-6">
-        <div ng-repeat="row in display.caravan.memberRows" class="col-sm-12">
-            <div ng-repeat="member in row" class="col-sm-6">
-                <div>{{member.firstName}} {{member.lastName}}</div>
-                <div><img ng-src="{{member.image}}" /></div>
-                <div class="form-group">
-                    <label class="control-label">Fuel</label>
-                    <div progressbar value="member.fuelUsage" max="100" min="0" type="{{member.fuelUsageType}}"></div>
+﻿<div ng-controller="Display as display">
+    <div class="row title-header"><img src="/Content/images/small_logo.png" class="title" /></div>
+    <div class="row main-container">
+        <div class="col-sm-3">
+            <div ng-repeat="member in display.caravan.members" class="row">
+                <div class="col-sm-12" ng-hide="$index === 0">
+                    <span class="coupling" ng-class="{'pending': member.status === display.statuses.Pending, 'coupled':member.status === display.statuses.Coupled}">&nbsp;</span>
+                </div>
+                <div class="col-sm-6 z-index-10">
+                    <img ng-src="{{member.image}}" class="profile-image"
+                         ng-class=" {'pending': member.status === display.statuses.Pending, 'coupled': member.status === display.statuses.Coupled, 'leader': member.status === display.statuses.Leader}" />
+                </div>
+                <div class="col-sm-6">
+                    <div class="fuel-bar">
+                        <div>Fuel</div>
+                        <div progressbar value="member.fuelUsage" max="100" min="0" type="{{member.fuelUsageType}}" class="margin-bottom-0"><b>{{member.fuelUsage}} %</b></div>
+                    </div>
+                </div> 
+            </div>
+            <div class="row margin-top-2" ng-controller="Buttons as buttons">
+                <div class="col-sm-6 z-index-10">
+                    <img src="/Content/images/profile_blank.png" class="profile-image" />
+                </div>
+                <div class="col-sm-6">
+                    <div class="fuel-bar link" ng-click="buttons.addMember()">
+                        <i class="glyphicon glyphicon-plus"></i> Add Caravaner
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label">Destination</label>
-                <span>{{display.trip.destination}}</span>
-            </div>
-            <div class="form-group">
-                <label class="control-label">ETA</label>
-                <span>{{display.trip.eta}}</span>
-            </div>
+    <div class="col-sm-9 margin-top-negative-2">
+        <div class="direction-indicator"><i class="glyphicon glyphicon-arrow-left"></i><div><span>{{display.caravan.directions.currentDirection.distance}}</span></div></div>
+        <div class="direction-bar"><span>{{display.caravan.directions.currentDirection.label}}</span></div>
+        <div google-map center="display.map.center" zoom="display.map.zoom" options="display.mapOptions" controls="display.mapControls">
         </div>
-        <div>
-            <div google-map center="display.map.center" zoom="display.map.zoom" options="display.mapOptions" controls="display.mapControls">
-            </div>
-        </div>
-    </div>
+    </div> 
+</div> 
 </div>

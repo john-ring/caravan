@@ -123,7 +123,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
-    <Folder Include="Content\images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +141,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\profile_ann.jpg" />
+    <Content Include="Content\images\profile_blank.png" />
+    <Content Include="Content\images\profile_chris.jpg" />
+    <Content Include="Content\images\profile_john.png" />
+    <Content Include="Content\images\small_logo.png" />
+    <Content Include="Content\images\splash_logo.png" />
     <Content Include="crossdomain.xml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

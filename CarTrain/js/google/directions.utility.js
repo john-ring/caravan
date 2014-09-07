@@ -27,6 +27,7 @@
         }
 
         function setMap(map) {
+            directionsDisplay = new google.maps.DirectionsRenderer();
             directionsDisplay.setMap(map);
         };
 

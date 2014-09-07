@@ -12,12 +12,12 @@
             }
         });
 
-        var updateFields = function (vin, status) {
+        var updateFields = function (vin, status, fields) {
             console.log(status);
 
             var promises = [];
-            for (var f in status) {
-                promises.push(resource.post({ field: f }, function (result) {
+            for (var f in fields) {
+                promises.push(resource.post({ field: f }, { data: status[f] }, function (result) {
                     return result;
                 }, function (error) {
                     console.log(error);

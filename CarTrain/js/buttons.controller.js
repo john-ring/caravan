@@ -15,6 +15,8 @@
         };
         vm.addMember = function () {
             Caravan.addCaravanMember(Friends.getNext());
+            if (!Caravan.isRunning)
+                Caravan.startCaravan();
         };
     };
 })();

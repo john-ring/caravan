@@ -15,7 +15,9 @@
             trip: null,
             members: [],
             init: init,
-            map: null
+            map: null,
+            isRunning: false,
+            directions: null
         };
 
         return service;
@@ -60,12 +62,14 @@
 
         function startCaravan() {
             updateDirections();
-            $speechSynthesis.speak("Starting caravan.");
+            //$speechSynthesis.speak("Starting caravan.");
             m2x.start();
+            service.isRunning = true;
         };
         function endCaravan() {
             $speechSynthesis.speak("Ending caravan.");
             m2x.stop();
+            service.isRunning = false;
         };
         function setLeader(leader) {
             service.members.splice(0, 0, leader);

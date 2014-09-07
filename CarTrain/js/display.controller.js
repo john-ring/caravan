@@ -13,11 +13,11 @@
                 latitude: 45,
                 longitude: -73
             },
-            zoom: 8,
+            zoom: 13,
             events: {
                 tilesloaded: function (map) {
                     $scope.$apply(function () {
-                        Caravan.map = map;
+                        $log.info('this is the map instance', map);
                     });
                 }
             }
@@ -29,7 +29,14 @@
 
         var init = function () {
             Caravan.init();
-            Caravan.setTrip({ destination: "Panama City Beach, FL", origin: "Atlanta, GA" });
+            Caravan.setTrip({
+                destination: "Panama City Beach, FL", origin: "Atlanta, GA"
+            });
+            Caravan.directions = {
+                currentDirection: {
+                    distance: "20 ft", label: "Piedmont Ave."
+                }
+            };
             Caravan.setLeader({
                 "firstName": "John",
                 "lastName": "Ring",
