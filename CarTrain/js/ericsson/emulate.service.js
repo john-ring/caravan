@@ -16,8 +16,8 @@
             console.log(status);
 
             var promises = [];
-            for (var f in fields) {
-                promises.push(resource.post({ field: status[f] }, function (result) {
+            for (var f in status) {
+                promises.push(resource.post({ field: f }, function (result) {
                     return result;
                 }, function (error) {
                     console.log(error);

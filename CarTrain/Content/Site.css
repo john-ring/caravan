@@ -40,3 +40,5 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.angular-google-map-container { height: 400px; }

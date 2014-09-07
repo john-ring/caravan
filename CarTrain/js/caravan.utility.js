@@ -2,9 +2,9 @@
     angular.module("caravan")
     .factory("Caravan", Caravan);
 
-    Caravan.$inject = ['Ericsson', 'm2x.Manager'];
+    Caravan.$inject = ['Ericsson', 'm2x.Manager', "$speechSynthesis"];
 
-    function Caravan(Ericsson, m2x) {
+    function Caravan(Ericsson, m2x, $speechSynthesis) {
         var service = {
             startCaravan: startCaravan,
             endCaravan: endCaravan,
@@ -31,6 +31,7 @@
         };
 
         function addCaravanMember(member) {
+            $speechSynthesis.speak("Adding " + member.firstName + " " + member.lastName + " to the caravan.");
             service.members.push(member);
             updateMemberRows();
         };
@@ -53,9 +54,11 @@
         };
 
         function startCaravan() {
+            $speechSynthesis.speak("Starting caravan.");
             m2x.start();
         };
         function endCaravan() {
+            $speechSynthesis.speak("Ending caravan.");
             m2x.stop();
         };
         function setLeader(leader) {

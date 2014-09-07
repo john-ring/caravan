@@ -32,6 +32,8 @@
         Latitude: "latitude"
     })
 
+    .constant("google.api", "AIzaSyByryJuieAdyQrbdOR_cFhjLTvSIrCgVgc")
+
     .constant("member.status", {
         Leader: "leader",
         Pending: "pending",

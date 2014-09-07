@@ -8,7 +8,7 @@
         var vm = this;
 
         $speechRecognition.onstart(function () {
-            $speechSynthesis.speak('How can I help you?');
+           // $speechSynthesis.speak('How can I help you?');
         });
         $speechRecognition['en-US'] = {
             "beginCaravan": {
@@ -28,6 +28,6 @@
             $speechSynthetis.speak("Beginning caravan.");
         };
 
-        // $speechRecognition.listen();
+        //$speechRecognition.listen();
     }
 })();

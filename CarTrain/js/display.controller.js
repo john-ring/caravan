@@ -8,6 +8,14 @@
         var vm = this;
         vm.caravan = Caravan;
 
+        vm.map = {
+            center: {
+                latitude: 45,
+                longitude: -73
+            },
+            zoom: 8
+        }
+
         var init = function () {
             Caravan.init();
             Caravan.setTrip({ destination: { city: "Austin", state: "TX", latitude: "", longitude: "" }, eta: 3.65 });
