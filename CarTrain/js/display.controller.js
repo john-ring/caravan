@@ -13,18 +13,29 @@
                 latitude: 45,
                 longitude: -73
             },
-            zoom: 8
+            zoom: 8,
+            events: {
+                tilesloaded: function (map) {
+                    $scope.$apply(function () {
+                        Caravan.map = map;
+                    });
+                }
+            }
         }
+        vm.mapOptions = {
+            disableDefaultUI: true
+        };
+        vm.mapControls = {};
 
         var init = function () {
             Caravan.init();
-            Caravan.setTrip({ destination: { city: "Austin", state: "TX", latitude: "", longitude: "" }, eta: 3.65 });
+            Caravan.setTrip({ destination: "Panama City Beach, FL", origin: "Atlanta, GA" });
             Caravan.setLeader({
                 "firstName": "John",
                 "lastName": "Ring",
                 "phoneNumber": "444-666-6799",
                 "vin": "123456781235",
-                "image": "/images/profile_john.png",
+                "image": "/Content/images/profile_john.png",
                 "feed": feed,
                 "fuelUsage": 87,
                 "fuelUsageType": "success",

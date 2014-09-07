@@ -156,8 +156,7 @@
     <Content Include="js\ericsson\status.service.js" />
     <Content Include="js\ericsson\ericsson.utility.js" />
     <Content Include="js\friends.utility.js" />
-    <Content Include="js\google\google.utilties.js" />
-    <Content Include="js\google\maps.services.js" />
+    <Content Include="js\google\directions.utility.js" />
     <Content Include="js\m2x\m2x.utility.js" />
     <Content Include="js\voice.controller.js" />
     <Content Include="Scripts\angular-adaptive-speech.js" />

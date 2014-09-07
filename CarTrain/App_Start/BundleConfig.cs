@@ -44,7 +44,8 @@ namespace Caravan
                       "~/js/ericsson/status.service.js",
                       "~/js/ericsson/diagnostics.service.js",
                       "~/js/m2x/m2x.utility.js",
-                      "~/js/m2x/status.service.js"));
+                      "~/js/m2x/status.service.js",
+                      "~/js/google/directions.utility.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

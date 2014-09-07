@@ -2,9 +2,9 @@
     angular.module("caravan")
     .factory("Caravan", Caravan);
 
-    Caravan.$inject = ['Ericsson', 'm2x.Manager', "$speechSynthesis"];
+    Caravan.$inject = ['Ericsson', 'm2x.Manager', "$speechSynthesis", "google.directions"];
 
-    function Caravan(Ericsson, m2x, $speechSynthesis) {
+    function Caravan(Ericsson, m2x, $speechSynthesis, Directions) {
         var service = {
             startCaravan: startCaravan,
             endCaravan: endCaravan,
@@ -14,7 +14,8 @@
             setTrip: setTrip,
             trip: null,
             members: [],
-            init: init
+            init: init,
+            map: null
         };
 
         return service;
@@ -53,7 +54,12 @@
             service.memberRows = newRows;
         };
 
+        function updateDirections() {
+            service.trip = Directions.getDirections(service.trip.origin, service.trip.destination)
+        };
+
         function startCaravan() {
+            updateDirections();
             $speechSynthesis.speak("Starting caravan.");
             m2x.start();
         };
@@ -94,6 +100,11 @@
 
         function beginCoupling(member) {
         };
+
+        function setMap(newMap) {
+            map = newMap;
+            Directions.setMap(map);
+        }
 
         init();
     }

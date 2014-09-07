@@ -1,9 +1,9 @@
 ﻿<div class="row" ng-controller="Display as display">
     <div class="col-sm-6">
-        <div ng-repeat="row in display.caravan.memberRows">
-            <div ng-repeat="member in row">
+        <div ng-repeat="row in display.caravan.memberRows" class="col-sm-12">
+            <div ng-repeat="member in row" class="col-sm-6">
                 <div>{{member.firstName}} {{member.lastName}}</div>
-                <div>{{member.image}}</div>
+                <div><img ng-src="{{member.image}}" /></div>
                 <div class="form-group">
                     <label class="control-label">Fuel</label>
                     <div progressbar value="member.fuelUsage" max="100" min="0" type="{{member.fuelUsageType}}"></div>
@@ -23,7 +23,8 @@
             </div>
         </div>
         <div>
-            <div google-map center="display.map.center" zoom="display.map.zoom"></div>
+            <div google-map center="display.map.center" zoom="display.map.zoom" options="display.mapOptions" controls="display.mapControls">
+            </div>
         </div>
     </div>
 </div>
