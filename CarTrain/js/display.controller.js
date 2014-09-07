@@ -2,18 +2,18 @@
     angular.module("caravan")
     .controller("Display", Display);
 
-    Display.$inject = ["Caravan", "m2x.feed.leader", "member.status"];
+    Display.$inject = ["$window", "Caravan", "m2x.feed.leader", "member.status"];
 
-    function Display(Caravan, feed, statuses) {
+    function Display($window, Caravan, feed, statuses) {
         var vm = this;
         vm.caravan = Caravan;
 
         vm.map = {
             center: {
-                latitude: 45,
-                longitude: -73
+                latitude: 33.75,
+                longitude: -84.39
             },
-            zoom: 13,
+            zoom: 8,
             events: {
                 tilesloaded: function (map) {
                     $scope.$apply(function () {
@@ -27,10 +27,15 @@
         };
         vm.mapControls = {};
 
+        vm.refresh = function () {
+            $window.location.reload();
+        };
+
         var init = function () {
             Caravan.init();
             Caravan.setTrip({
-                destination: "Panama City Beach, FL", origin: "Atlanta, GA"
+                destination: "Panama City Beach, FL",
+                origin: "Atlanta, GA"
             });
             Caravan.directions = {
                 currentDirection: {

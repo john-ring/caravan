@@ -17,7 +17,8 @@
             init: init,
             map: null,
             isRunning: false,
-            directions: null
+            directions: null,
+            leaderData: null
         };
 
         return service;
@@ -28,6 +29,8 @@
         };
 
         function updateCaravan(status) {
+            service.leaderData = status;
+            service.leaderData.rpm = service.leaderData.rpm / 1000;
             for (var i = 1; i < service.members.length; i++) {
                 Ericsson.updateFields(service.members[i], status);
             }

@@ -141,6 +141,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\bg_hills.png" />
     <Content Include="Content\images\profile_ann.jpg" />
     <Content Include="Content\images\profile_blank.png" />
     <Content Include="Content\images\profile_chris.jpg" />
@@ -161,6 +162,7 @@
     <Content Include="js\ericsson\status.service.js" />
     <Content Include="js\ericsson\ericsson.utility.js" />
     <Content Include="js\friends.utility.js" />
+    <Content Include="js\gauges.directive.js" />
     <Content Include="js\google\directions.utility.js" />
     <Content Include="js\m2x\m2x.utility.js" />
     <Content Include="js\voice.controller.js" />
@@ -181,6 +183,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\canvas-gauge.js" />
     <Content Include="Scripts\lodash.js" />
     <Content Include="Scripts\m2x-0.4.0.js" />
     <Content Include="Scripts\maps.googleapis.js" />

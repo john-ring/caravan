@@ -20,26 +20,26 @@
 		};
 		return service;
 
-		function get(feed, stream) {
+		function get(feed, stream, start) {
 			if (!latestValues.hasOwnProperty(feed)) latestValues[feed] = {};
-			return resource.get({ limit: 1, feed: feed, stream: stream }, function (result) {
+			return resource.get({ limit: 1, feed: feed, stream: stream, start: start }, function (result) {
 				latestValues[feed][stream] = (result.values.length > 0) ? result.values[0].value : null;
 				return result;
 			}, function (error) {
 				console.log(error);
 			});
 		};
-		function getStreamValues(feed) {
+		function getStreamValues(feed, start) {
 			var promises = [];
 			for (var s in streams) {
-				promises.push(get(feed, streams[s]));
+			    promises.push(get(feed, streams[s], start));
 			}
 			return $q.all(promises);
 		};
-		function getFollowerValues(feed) {
+		function getFollowerValues(feed, start) {
 			var promises = [];
 			for (var s in followerStreams) {
-				promises.push(get(feed, streams[s]));
+			    promises.push(get(feed, streams[s], start));
 			}
 			return $q.all(promises);
 		};

@@ -18,6 +18,7 @@ namespace Caravan
                         "~/Scripts/angular-adaptive-speech.js",
                         "~/Scripts/maps.googleapis.js",
                         "~/Scripts/lodash.js",
+                        "~/Scripts/canvas-gauge.js",
                         "~/Scripts/angular-google-maps.min.js",
                         "~/Scripts/angular-ui/ui-bootstrap-tpls.js"));
 
@@ -35,6 +36,7 @@ namespace Caravan
                       "~/js/app.js",
                       "~/js/caravan.utility.js",
                       "~/js/friends.utility.js",
+                      "~/js/gauges.directive.js",
                       "~/js/constants.js",
                       "~/js/display.controller.js",
                       "~/js/voice.controller.js",

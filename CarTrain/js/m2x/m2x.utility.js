@@ -2,13 +2,16 @@
     angular.module("caravan")
     .factory("m2x.Manager", Manager);
 
-    Manager.$inject = ['$interval', 'm2x.service.status'];
+    Manager.$inject = ['$interval', 'm2x.service.status', '$filter'];
 
-    function Manager($interval, statusService) {
+    function Manager($interval, statusService, $filter) {
         var leaderCallback = null;
         var followerCallback = null;
         var members = [];
         var promise = null;
+
+        var seedTime = "014-09-07T15:48:37.4238281-04:00";
+        var startTime = null;
 
         var service = {
             start: start,
@@ -44,10 +47,17 @@
             });
         };
 
+        function incrementStart() {
+            var date = Date.parse(seedTime);
+            date.setTime(date.getTime() + 100);
+            startTime = $filter('date')(date, 'yyyy-MM-dd HH:mm:ss Z');
+        };
+
         function start() {
             promise = $interval(function () {
                 getLeaderValues();
                 getFollowerValues();
+                incrementStart();
             }, 5000);
         };
 
